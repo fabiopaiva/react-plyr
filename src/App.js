@@ -10,8 +10,9 @@ class App extends Component {
         {/* <ReactPlyr /> */}
 
         <PlyrYoutube
-          enabled
-          videoId="bTqVqk7FSmY" />
+          videoId="bTqVqk7FSmY"
+          controls={['play', 'progress']}
+        />
       </div>
     );
   }

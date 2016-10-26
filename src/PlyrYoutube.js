@@ -13,33 +13,24 @@ class PlyrYoutube extends Component {
 
   componentDidMount() {
     const options = {
-      enabled: this.props.enabled,
-      controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'fullscreen'],
-      loadSprite: true,
-      // iconUrl: null,
-      iconPrefix: 'plyr',
-      debug: true,
-      autoplay: false,
-      seekTime: 10,
-      volume: 5,
-      clickToPlay: true,
-      disableContextMenu: true,
-      hideControls: true,
-      showPosterOnEnd: false,
-      keyboardShortcuts: {
-        focused: true,
-        global: false
-      },
-      tooltips: {
-        controls: false,
-        seek: true
-      },
-      duration: null,
-      displayDuration: true,
-      storage: {
-        enabled: true,
-        key: 'plyr_volume'
-      }
+      enabled: !this.props.disabled,
+      controls: this.props.controls,
+      loadSprite: this.props.loadSprite,
+      // iconUrl: this.props.iconUrl,
+      iconPrefix: this.props.iconPrefix,
+      debug: this.props.debug,
+      autoplay: this.props.autoplay,
+      seekTime: this.props.seekTime,
+      volume: this.props.volume,
+      clickToPlay: this.props.clickToPlay,
+      disableContextMenu: this.props.disableContextMenu,
+      hideControls: this.props.hideControls,
+      showPosterOnEnd: this.props.showPosterOnEnd,
+      keyboardShortcuts: this.props.keyboardShortcuts,
+      tooltips: this.props.tooltips,
+      duration: this.props.duration,
+      displayDuration: this.props.displayDuration,
+      storage: this.props.storage
     };
 
     const youtubeurl = youtubeUrl.valid(`https://www.youtube.com/watch?v=${this.props.videoId}`);
@@ -82,5 +73,36 @@ class PlyrYoutube extends Component {
     );
   }
 }
+
+// Specifies the default values for props:
+PlyrYoutube.defaultProps = {
+  disabled: false,
+  controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'fullscreen'],
+  loadSprite: true,
+  // iconUrl: null,
+  iconPrefix: 'plyr',
+  debug: false,
+  autoplay: false,
+  seekTime: 10,
+  volume: 5,
+  clickToPlay: true,
+  disableContextMenu: true,
+  hideControls: true,
+  showPosterOnEnd: false,
+  keyboardShortcuts: {
+    focused: true,
+    global: false
+  },
+  tooltips: {
+    controls: false,
+    seek: true
+  },
+  duration: null,
+  displayDuration: true,
+  storage: {
+    enabled: true,
+    key: 'plyr_volume'
+  }
+};
 
 export default PlyrYoutube;
