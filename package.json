@@ -1,0 +1,21 @@
+{
+  "name": "react-plyr",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.7.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "plyr": "^2.0.9",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "youtube-url": "^0.5.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
