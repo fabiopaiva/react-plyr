@@ -96,18 +96,17 @@ class ReactPlyr extends Component {
     };
 
     this.setState({
-      instance: plyr.setup(`.ReactPlyr-${this.props.type}`, options)
+      instance: plyr.setup(`.ReactPlyr`, options)
     });
   }
 
   componentWillUnmount() {
-    // this.state.instance.destroy();
+    this.state.instance[0].destroy();
   }
 
   render() {
-    const className = `ReactPlyr-${this.props.type}`;
     return (
-      <div className={className}>
+      <div className="ReactPlyr">
         <div
           data-type={this.props.type}
           data-video-id={this.props.videoId}

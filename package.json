@@ -25,6 +25,7 @@
     "react": "15.x"
   },
   "devDependencies": {
+    "@kadira/react-storybook-addon-info": "^3.3.0",
     "@kadira/storybook": "^2.31.0",
     "@kadira/storybook-addon-options": "^1.0.1",
     "nwb": "0.12.x",
