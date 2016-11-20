@@ -15,7 +15,6 @@
     "build": "nwb build-react-component",
     "clean": "nwb clean-module && npm clean-demo",
     "start": "nwb serve-react-demo",
-    "test": "nwb test",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -s src -o docs"
   },
