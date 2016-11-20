@@ -1,21 +1,42 @@
 {
   "name": "react-plyr",
-  "version": "0.1.0",
-  "private": true,
-  "devDependencies": {
-    "react-scripts": "0.7.0"
+  "version": "1.0.0",
+  "description": "react-plyr React component",
+  "main": "lib/ReactPlyr.js",
+  "jsnext:main": "es/ReactPlyr.js",
+  "module": "es/ReactPlyr.js",
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd"
+  ],
+  "scripts": {
+    "build": "nwb build-react-component",
+    "clean": "nwb clean-module && npm clean-demo",
+    "start": "nwb serve-react-demo",
+    "test": "nwb test",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -s src -o docs"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
-    "plyr": "^2.0.9",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "youtube-url": "^0.5.0"
+    "plyr": "^2.0.10"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+  "peerDependencies": {
+    "react": "15.x"
+  },
+  "devDependencies": {
+    "@kadira/storybook": "^2.31.0",
+    "@kadira/storybook-addon-options": "^1.0.1",
+    "nwb": "0.12.x",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0"
+  },
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "repository": "",
+  "keywords": [
+    "react-component"
+  ]
 }
