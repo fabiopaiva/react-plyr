@@ -35,6 +35,11 @@ class Demo extends React.Component {
           isPlaying={false}
         />
 
+        <ReactPlyr
+          type="vimeo"
+          videoId="https://vimeo.com/189789787"
+        />
+
         <button type="button" onClick={this.play}>Play</button>
         <button type="button" onClick={this.pause}>Pause</button>
         <button type="button" onClick={this._togglePlay}>ToglePlay</button>
