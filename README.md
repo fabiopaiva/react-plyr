@@ -2,7 +2,7 @@
 
 A React video component based on Plyr.
 
-[![react-plyr ](screenshot.png "react-plyr")]
+![react-plyr ](screenshot.png "react-plyr")
 
 ## Installation
 
