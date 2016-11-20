@@ -1,6 +1,6 @@
 {
   "name": "react-plyr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react-plyr React component",
   "main": "lib/ReactPlyr.js",
   "jsnext:main": "es/ReactPlyr.js",
