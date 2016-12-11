@@ -61,7 +61,8 @@
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o docs",
-    "publish": "np"
+    "prepublish": "npm run build",
+    "np": "np"
   },
   "jest": {
     "moduleFileExtensions": [
