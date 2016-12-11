@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import plyr from 'plyr';
 
-import '../node_modules/plyr/dist/plyr.css';
+import 'plyr/dist/plyr.css';
 
 class Plyr extends Component {
   constructor() {
@@ -98,7 +98,7 @@ class Plyr extends Component {
     };
 
     this.setState({
-      instance: plyr.setup(`.react-plyr`, options)
+      instance: plyr.setup('.react-plyr', options)
     });
   }
 
@@ -108,7 +108,7 @@ class Plyr extends Component {
 
   render() {
     return (
-      <div className="react-plyr">
+      <div className="react-plyr" style={this.props.style}>
         <div
           data-type={this.props.type}
           data-video-id={this.props.videoId}
