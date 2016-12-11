@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import plyr from 'plyr';
 
-import 'plyr/dist/_plyr.css';
+import 'plyr/dist/plyr.css';
 
 class Plyr extends Component {
   constructor() {
