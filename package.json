@@ -1,6 +1,6 @@
 {
   "name": "react-plyr",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A simple, accessible HTML5 media player React Component",
   "main": "lib/index.js",
   "author": "Jose Miguel Bejarano",
