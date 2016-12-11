@@ -55,7 +55,6 @@
   "scripts": {
     "start": "npm run storybook",
     "build": "npm run clean && babel src --out-dir lib --ignore test.js",
-    "postinstall": "npm run build",
     "clean": "rimraf lib",
     "test": "jest && npm run test:lint",
     "test:lint": "eslint src",
