@@ -7,14 +7,16 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div
-    className="react-plyr">
+    className="react-plyr"
+    style={undefined}>
     <div
         data-type="vimeo"
         data-video-id="https://vimeo.com/189789787" />
 </div>,
   "nodes": Array [
     <div
-      className="react-plyr">
+      className="react-plyr"
+      style={undefined}>
       <div
             data-type="vimeo"
             data-video-id="https://vimeo.com/189789787" />
@@ -140,14 +142,16 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
-          className="react-plyr">
+          className="react-plyr"
+          style={undefined}>
           <div
                     data-type="vimeo"
                     data-video-id="https://vimeo.com/189789787" />
 </div>,
         "_debugID": 4,
         "_renderedOutput": <div
-          className="react-plyr">
+          className="react-plyr"
+          style={undefined}>
           <div
                     data-type="vimeo"
                     data-video-id="https://vimeo.com/189789787" />
@@ -221,14 +225,16 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div
-    className="react-plyr">
+    className="react-plyr"
+    style={undefined}>
     <div
         data-type="youtube"
         data-video-id="CDFN1VatiJA" />
 </div>,
   "nodes": Array [
     <div
-      className="react-plyr">
+      className="react-plyr"
+      style={undefined}>
       <div
             data-type="youtube"
             data-video-id="CDFN1VatiJA" />
@@ -354,14 +360,16 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
-          className="react-plyr">
+          className="react-plyr"
+          style={undefined}>
           <div
                     data-type="youtube"
                     data-video-id="CDFN1VatiJA" />
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
-          className="react-plyr">
+          className="react-plyr"
+          style={undefined}>
           <div
                     data-type="youtube"
                     data-video-id="CDFN1VatiJA" />
