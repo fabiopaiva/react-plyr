@@ -3,6 +3,7 @@
 [![npm](https://img.shields.io/npm/dt/react-plyr.svg)](https://www.npmjs.com/package/react-plyr)
 [![npm](https://img.shields.io/npm/v/react-plyr.svg)](https://www.npmjs.com/package/react-plyr)
 [![David](https://img.shields.io/david/xDae/react-plyr.svg)](https://david-dm.org/xDae/react-plyr)
+[![Travis](https://img.shields.io/travis/xDae/react-plyr.svg)](https://travis-ci.org/xDae/react-plyr)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 A React video component based on Plyr.
