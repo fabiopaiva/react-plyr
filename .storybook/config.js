@@ -15,7 +15,7 @@ setOptions({
   // showLeftPanel: false,
   // showDownPanel: false,
   // showSearchBox: false,
-  downPanelInRight: true,
+  downPanelInRight: true
 });
 
 configure(loadStories, module);

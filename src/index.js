@@ -3,12 +3,12 @@ import plyr from 'plyr';
 
 import '../node_modules/plyr/dist/plyr.css';
 
-class ReactPlyr extends Component {
+class Plyr extends Component {
   constructor() {
     super();
 
     this.state = {
-      instance: undefined
+      instance: null
     };
   }
 
@@ -44,6 +44,8 @@ class ReactPlyr extends Component {
   };
 
   static propTypes = {
+    type: PropTypes.string.isRequired,
+    videoId: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
     controls: PropTypes.arrayOf(PropTypes.string),
     loadSprite: PropTypes.bool,
@@ -96,7 +98,7 @@ class ReactPlyr extends Component {
     };
 
     this.setState({
-      instance: plyr.setup(`.ReactPlyr`, options)
+      instance: plyr.setup(`.react-plyr`, options)
     });
   }
 
@@ -106,7 +108,7 @@ class ReactPlyr extends Component {
 
   render() {
     return (
-      <div className="ReactPlyr">
+      <div className="react-plyr">
         <div
           data-type={this.props.type}
           data-video-id={this.props.videoId}
@@ -117,4 +119,4 @@ class ReactPlyr extends Component {
   }
 }
 
-export default ReactPlyr;
+export default Plyr;

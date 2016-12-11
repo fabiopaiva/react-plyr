@@ -1,17 +1,17 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf } from '@kadira/storybook';
 
-import ReactPlyr from '../src/ReactPlyr';
+import Plyr from '../src';
 
 storiesOf('React Plyr', module)
-  .addWithInfo('default Youtube video', () => (
-    <ReactPlyr
+  .add('default Youtube video', () => (
+    <Plyr
       type="youtube"
       videoId="CDFN1VatiJA"
     />
   ))
-  .addWithInfo('default Vimeo video', () => (
-    <ReactPlyr
+  .add('default Vimeo video', () => (
+    <Plyr
       type="vimeo"
       videoId="https://vimeo.com/189789787"
     />

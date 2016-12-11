@@ -1,4 +1,9 @@
-# README Boilerplate
+# ReactPlyr Video Component
+
+[![npm](https://img.shields.io/npm/dt/react-plyr.svg)](https://www.npmjs.com/package/react-plyr)
+[![npm](https://img.shields.io/npm/v/react-plyr.svg)](https://www.npmjs.com/package/react-plyr)
+[![David](https://img.shields.io/david/xDae/react-plyr.svg)](https://david-dm.org/xDae/react-plyr)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 A React video component based on Plyr.
 
@@ -9,18 +14,18 @@ A React video component based on Plyr.
 Add `react-plyr` into your package.json dependencies:
 
 ```sh
-npm install react-plyr -S
+npm install react-plyr --save
 ```
 
 ## Usage
 
 ```javascript
-import ReactPlyr from 'react-plyr';
+import Plyr from 'react-plyr';
 
 // add the component in the render function
 render() {
   return (
-    <ReactPlyr
+    <Plyr
       type="youtube"
       videoId="CDFN1VatiJA"
     />
