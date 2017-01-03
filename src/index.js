@@ -7,9 +7,7 @@ class Plyr extends Component {
   constructor() {
     super();
 
-    this.state = {
-      instance: null
-    };
+    this.instance = null;
   }
 
   // Specifies the default values for props:
@@ -97,13 +95,11 @@ class Plyr extends Component {
       storage: this.props.storage
     };
 
-    this.setState({
-      instance: plyr.setup('.react-plyr', options)
-    });
+    this.instance = plyr.setup('.react-plyr', options);
   }
 
   componentWillUnmount() {
-    this.state.instance[0].destroy();
+    this.instance[0].destroy();
   }
 
   render() {

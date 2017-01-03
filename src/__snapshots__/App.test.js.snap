@@ -80,6 +80,7 @@ ShallowWrapper {
       "_instance": Plyr {
         "_reactInternalInstance": [Circular],
         "context": Object {},
+        "instance": null,
         "props": Object {
           "autoplay": false,
           "clickToPlay": true,
@@ -120,9 +121,7 @@ ShallowWrapper {
           "volume": 5,
         },
         "refs": Object {},
-        "state": Object {
-          "instance": null,
-        },
+        "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -298,6 +297,7 @@ ShallowWrapper {
       "_instance": Plyr {
         "_reactInternalInstance": [Circular],
         "context": Object {},
+        "instance": null,
         "props": Object {
           "autoplay": false,
           "clickToPlay": true,
@@ -338,9 +338,7 @@ ShallowWrapper {
           "volume": 5,
         },
         "refs": Object {},
-        "state": Object {
-          "instance": null,
-        },
+        "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
