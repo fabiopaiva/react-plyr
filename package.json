@@ -14,40 +14,38 @@
     "url": "https://github.com/xDae/react-plyr/issues"
   },
   "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
+    "lib"
   ],
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.3.0",
-    "@kadira/storybook": "^2.34.0",
+    "@kadira/storybook": "^2.35.2",
     "@kadira/storybook-addon-options": "^1.0.1",
     "babel-cli": "^6.18.0",
-    "babel-core": "^6.18.2",
+    "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
-    "babel-jest": "^17.0.2",
+    "babel-jest": "^18.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-2": "^6.18.0",
-    "enzyme": "^2.6.0",
-    "eslint": "^3.11.1",
+    "enzyme": "^2.7.0",
+    "eslint": "^3.13.1",
     "eslint-config-react-app": "^0.5.0",
-    "eslint-plugin-flowtype": "^2.29.1",
+    "eslint-plugin-flowtype": "^2.29.2",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "2.2.3",
-    "eslint-plugin-react": "^6.7.1",
+    "eslint-plugin-react": "^6.9.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^17.0.3",
-    "jest-cli": "^17.0.3",
-    "np": "^2.10.1",
-    "react": "^15.4.1",
-    "react-addons-test-utils": "^15.4.1",
-    "react-dom": "^15.4.1",
+    "jest": "^18.1.0",
+    "jest-cli": "^18.1.0",
+    "np": "^2.12.0",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
     "rimraf": "2.5.4"
   },
   "dependencies": {
-    "plyr": "^2.0.11"
+    "plyr": "^2.0.11",
+    "sweetalert-react": "^0.4.6"
   },
   "peerDependencies": {
     "react": "15.x"
@@ -57,6 +55,7 @@
     "build": "npm run clean && babel src --out-dir lib --ignore test.js",
     "clean": "rimraf lib",
     "test": "jest && npm run test:lint",
+    "test:coverage": "jest --coverage",
     "test:lint": "eslint src",
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006",

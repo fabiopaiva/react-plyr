@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import plyr from 'plyr';
 
-import 'plyr/dist/plyr.css';
-
 class Plyr extends Component {
   constructor() {
     super();
@@ -12,6 +10,8 @@ class Plyr extends Component {
 
   // Specifies the default values for props:
   static defaultProps = {
+    type: 'youtube',
+
     disabled: false,
     controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'fullscreen'],
     loadSprite: true,
@@ -42,8 +42,15 @@ class Plyr extends Component {
   };
 
   static propTypes = {
-    type: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(['youtube', 'vimeo']),
     videoId: PropTypes.string.isRequired,
+    onReady: PropTypes.func,
+    onPlay: PropTypes.func,
+    onPause: PropTypes.func,
+    onEnd: PropTypes.func,
+    onEnterFullscreen: PropTypes.func,
+
+    // plyr props
     disabled: PropTypes.bool,
     controls: PropTypes.arrayOf(PropTypes.string),
     loadSprite: PropTypes.bool,
@@ -96,11 +103,49 @@ class Plyr extends Component {
     };
 
     this.instance = plyr.setup('.react-plyr', options);
+
+    this.instance[0].on('ready', () => {
+      this.props.onReady && this.props.onReady();
+    });
+
+    this.instance[0].on('play', () => {
+      this.props.onPlay && this.props.onPlay();
+    });
+
+    this.instance[0].on('pause', () => {
+      this.props.onPause && this.props.onPause();
+    });
+
+    this.instance[0].on('ended', () => {
+      this.props.onEnd && this.props.onEnd();
+    });
+
+    this.instance[0].on('seeked', event => {
+      const time = event.detail.plyr.getCurrentTime();
+      this.props.onSeeked && this.props.onSeeked(time);
+    });
+
+    this.instance[0].on('enterfullscreen', () => {
+      this.props.onEnterFullscreen && this.props.onEnterFullscreen();
+    });
+
+    this.instance[0].on('exitfullscreen', () => {
+      this.props.onExitFullscreen && this.props.onExitFullscreen();
+    });
+
+    this.instance[0].on('volumechange', event => {
+      const isMuted = event.detail.plyr.isMuted();
+      const volume = event.detail.plyr.getVolume();
+
+      this.props.onVolumeChange && this.props.onVolumeChange({ isMuted, volume });
+    });
   }
 
   componentWillUnmount() {
     this.instance[0].destroy();
   }
+
+
 
   render() {
     return (
