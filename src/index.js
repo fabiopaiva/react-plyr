@@ -48,7 +48,9 @@ class Plyr extends Component {
     onPlay: PropTypes.func,
     onPause: PropTypes.func,
     onEnd: PropTypes.func,
+    onSeeked: PropTypes.func,
     onEnterFullscreen: PropTypes.func,
+    onVolumeChange: PropTypes.func,
 
     // plyr props
     disabled: PropTypes.bool,
@@ -144,8 +146,6 @@ class Plyr extends Component {
   componentWillUnmount() {
     this.instance[0].destroy();
   }
-
-
 
   render() {
     return (
