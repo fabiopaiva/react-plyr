@@ -1,4 +1,6 @@
-exports[`test renders a simple Vimeo Video 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a simple Vimeo Video 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -8,18 +10,22 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className="react-plyr"
-    style={undefined}>
+    style={undefined}
+>
     <div
         data-type="vimeo"
-        data-video-id="https://vimeo.com/189789787" />
+        data-video-id="https://vimeo.com/189789787"
+    />
 </div>,
   "nodes": Array [
     <div
       className="react-plyr"
-      style={undefined}>
+      style={undefined}
+>
       <div
             data-type="vimeo"
-            data-video-id="https://vimeo.com/189789787" />
+            data-video-id="https://vimeo.com/189789787"
+      />
 </div>,
   ],
   "options": Object {},
@@ -45,9 +51,9 @@ ShallowWrapper {
         }
         debug={false}
         disableContextMenu={true}
-        disabled={false}
         displayDuration={true}
         duration={null}
+        enabled={true}
         hideControls={true}
         iconPrefix="plyr"
         keyboardShortcuts={
@@ -73,14 +79,24 @@ ShallowWrapper {
         }
         type="vimeo"
         videoId="https://vimeo.com/189789787"
-        volume={5} />,
+        volume={5}
+/>,
       "_debugID": 3,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": Plyr {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "instance": null,
+        "getCurrentTime": [Function],
+        "getDuration": [Function],
+        "getType": [Function],
+        "getVolume": [Function],
+        "isMuted": [Function],
+        "isPaused": [Function],
+        "isReady": [Function],
+        "pause": [Function],
+        "play": [Function],
+        "player": null,
         "props": Object {
           "autoplay": false,
           "clickToPlay": true,
@@ -96,9 +112,9 @@ ShallowWrapper {
           ],
           "debug": false,
           "disableContextMenu": true,
-          "disabled": false,
           "displayDuration": true,
           "duration": null,
+          "enabled": true,
           "hideControls": true,
           "iconPrefix": "plyr",
           "keyboardShortcuts": Object {
@@ -121,7 +137,11 @@ ShallowWrapper {
           "volume": 5,
         },
         "refs": Object {},
+        "restart": [Function],
         "state": null,
+        "stop": [Function],
+        "toggleMute": [Function],
+        "togglePlay": [Function],
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -142,18 +162,22 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className="react-plyr"
-          style={undefined}>
+          style={undefined}
+>
           <div
                     data-type="vimeo"
-                    data-video-id="https://vimeo.com/189789787" />
+                    data-video-id="https://vimeo.com/189789787"
+          />
 </div>,
         "_debugID": 4,
         "_renderedOutput": <div
           className="react-plyr"
-          style={undefined}>
+          style={undefined}
+>
           <div
                     data-type="vimeo"
-                    data-video-id="https://vimeo.com/189789787" />
+                    data-video-id="https://vimeo.com/189789787"
+          />
 </div>,
       },
       "_renderedNodeType": 0,
@@ -183,9 +207,9 @@ ShallowWrapper {
     }
     debug={false}
     disableContextMenu={true}
-    disabled={false}
     displayDuration={true}
     duration={null}
+    enabled={true}
     hideControls={true}
     iconPrefix="plyr"
     keyboardShortcuts={
@@ -211,11 +235,12 @@ ShallowWrapper {
     }
     type="vimeo"
     videoId="https://vimeo.com/189789787"
-    volume={5} />,
+    volume={5}
+/>,
 }
 `;
 
-exports[`test renders a simple Youtube Video 1`] = `
+exports[`renders a simple Youtube Video 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -225,18 +250,22 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className="react-plyr"
-    style={undefined}>
+    style={undefined}
+>
     <div
         data-type="youtube"
-        data-video-id="CDFN1VatiJA" />
+        data-video-id="CDFN1VatiJA"
+    />
 </div>,
   "nodes": Array [
     <div
       className="react-plyr"
-      style={undefined}>
+      style={undefined}
+>
       <div
             data-type="youtube"
-            data-video-id="CDFN1VatiJA" />
+            data-video-id="CDFN1VatiJA"
+      />
 </div>,
   ],
   "options": Object {},
@@ -262,9 +291,9 @@ ShallowWrapper {
         }
         debug={false}
         disableContextMenu={true}
-        disabled={false}
         displayDuration={true}
         duration={null}
+        enabled={true}
         hideControls={true}
         iconPrefix="plyr"
         keyboardShortcuts={
@@ -290,14 +319,24 @@ ShallowWrapper {
         }
         type="youtube"
         videoId="CDFN1VatiJA"
-        volume={5} />,
+        volume={5}
+/>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": Plyr {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "instance": null,
+        "getCurrentTime": [Function],
+        "getDuration": [Function],
+        "getType": [Function],
+        "getVolume": [Function],
+        "isMuted": [Function],
+        "isPaused": [Function],
+        "isReady": [Function],
+        "pause": [Function],
+        "play": [Function],
+        "player": null,
         "props": Object {
           "autoplay": false,
           "clickToPlay": true,
@@ -313,9 +352,9 @@ ShallowWrapper {
           ],
           "debug": false,
           "disableContextMenu": true,
-          "disabled": false,
           "displayDuration": true,
           "duration": null,
+          "enabled": true,
           "hideControls": true,
           "iconPrefix": "plyr",
           "keyboardShortcuts": Object {
@@ -338,7 +377,11 @@ ShallowWrapper {
           "volume": 5,
         },
         "refs": Object {},
+        "restart": [Function],
         "state": null,
+        "stop": [Function],
+        "toggleMute": [Function],
+        "togglePlay": [Function],
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -359,18 +402,22 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className="react-plyr"
-          style={undefined}>
+          style={undefined}
+>
           <div
                     data-type="youtube"
-                    data-video-id="CDFN1VatiJA" />
+                    data-video-id="CDFN1VatiJA"
+          />
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
           className="react-plyr"
-          style={undefined}>
+          style={undefined}
+>
           <div
                     data-type="youtube"
-                    data-video-id="CDFN1VatiJA" />
+                    data-video-id="CDFN1VatiJA"
+          />
 </div>,
       },
       "_renderedNodeType": 0,
@@ -400,9 +447,9 @@ ShallowWrapper {
     }
     debug={false}
     disableContextMenu={true}
-    disabled={false}
     displayDuration={true}
     duration={null}
+    enabled={true}
     hideControls={true}
     iconPrefix="plyr"
     keyboardShortcuts={
@@ -428,6 +475,7 @@ ShallowWrapper {
     }
     type="youtube"
     videoId="CDFN1VatiJA"
-    volume={5} />,
+    volume={5}
+/>,
 }
 `;

@@ -5,14 +5,14 @@ class Plyr extends Component {
   constructor() {
     super();
 
-    this.instance = null;
+    this.player = null;
   }
 
   // Specifies the default values for props:
   static defaultProps = {
     type: 'youtube',
 
-    disabled: false,
+    enabled: true,
     controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'fullscreen'],
     loadSprite: true,
     // iconUrl: null,
@@ -53,7 +53,7 @@ class Plyr extends Component {
     onVolumeChange: PropTypes.func,
 
     // plyr props
-    disabled: PropTypes.bool,
+    enabled: PropTypes.bool,
     controls: PropTypes.arrayOf(PropTypes.string),
     loadSprite: PropTypes.bool,
     // iconUrl: PropTypes.string,
@@ -82,9 +82,23 @@ class Plyr extends Component {
     }),
   }
 
+  getType = () => this.player.getType();
+  isReady = () => this.player.isReady();
+  play = () => this.player.play();
+  pause = () => this.player.pause();
+  stop = () => this.player.stop();
+  togglePlay = () => this.player.togglePlay();
+  restart = () => this.player.restart();
+  getCurrentTime = () => this.player.getCurrentTime();
+  getDuration = () => this.player.getDuration();
+  getVolume = () => this.player.getVolume();
+  isMuted = () => this.player.isMuted();
+  isPaused = () => this.player.isPaused();
+  toggleMute = () => this.player.toggleMute();
+
   componentDidMount() {
     const options = {
-      enabled: !this.props.disabled,
+      enabled: this.props.enabled,
       controls: this.props.controls,
       loadSprite: this.props.loadSprite,
       // iconUrl: this.props.iconUrl,
@@ -104,38 +118,38 @@ class Plyr extends Component {
       storage: this.props.storage
     };
 
-    this.instance = plyr.setup('.react-plyr', options);
+    this.player = plyr.setup('.react-plyr', options)[0];
 
-    this.instance[0].on('ready', () => {
+    this.player.on('ready', () => {
       this.props.onReady && this.props.onReady();
     });
 
-    this.instance[0].on('play', () => {
+    this.player.on('play', () => {
       this.props.onPlay && this.props.onPlay();
     });
 
-    this.instance[0].on('pause', () => {
+    this.player.on('pause', () => {
       this.props.onPause && this.props.onPause();
     });
 
-    this.instance[0].on('ended', () => {
+    this.player.on('ended', () => {
       this.props.onEnd && this.props.onEnd();
     });
 
-    this.instance[0].on('seeked', event => {
+    this.player.on('seeked', event => {
       const time = event.detail.plyr.getCurrentTime();
       this.props.onSeeked && this.props.onSeeked(time);
     });
 
-    this.instance[0].on('enterfullscreen', () => {
+    this.player.on('enterfullscreen', () => {
       this.props.onEnterFullscreen && this.props.onEnterFullscreen();
     });
 
-    this.instance[0].on('exitfullscreen', () => {
+    this.player.on('exitfullscreen', () => {
       this.props.onExitFullscreen && this.props.onExitFullscreen();
     });
 
-    this.instance[0].on('volumechange', event => {
+    this.player.on('volumechange', event => {
       const isMuted = event.detail.plyr.isMuted();
       const volume = event.detail.plyr.getVolume();
 
@@ -144,7 +158,7 @@ class Plyr extends Component {
   }
 
   componentWillUnmount() {
-    this.instance[0].destroy();
+    this.player.destroy();
   }
 
   render() {
@@ -153,8 +167,7 @@ class Plyr extends Component {
         <div
           data-type={this.props.type}
           data-video-id={this.props.videoId}
-        >
-        </div>
+        />
       </div>
     );
   }

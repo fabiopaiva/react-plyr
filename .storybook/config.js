@@ -4,18 +4,14 @@ import { setOptions } from '@kadira/storybook-addon-options';
 
 setAddon(infoAddon);
 
-function loadStories() {
-  require('../stories');
-}
-
 setOptions({
   name: 'React Plyr',
   url: 'https://github.com/xDae/react-plyr#readme',
   // goFullScreen: false,
-  // showLeftPanel: false,
-  // showDownPanel: false,
+  showLeftPanel: true,
+  showDownPanel: true,
   // showSearchBox: false,
   downPanelInRight: true
 });
 
-configure(loadStories, module);
+configure(() => require('./stories'), module);
