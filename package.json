@@ -45,8 +45,7 @@
     "rimraf": "^2.6.1"
   },
   "dependencies": {
-    "plyr": "^2.0.12",
-    "sweetalert-react": "^0.4.6"
+    "plyr": "^2.0.12"
   },
   "peerDependencies": {
     "react": "15.x"
@@ -71,11 +70,10 @@
       "json"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>/(build|docs|node_modules)/"
+      "<rootDir>/(lib|docs|node_modules)/"
     ],
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "identity-obj-proxy"
-    },
-    "testEnvironment": "jsdom"
+    }
   }
 }
