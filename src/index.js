@@ -82,19 +82,19 @@ class Plyr extends Component {
     }),
   }
 
-  getType = () => this.player.getType();
-  isReady = () => this.player.isReady();
-  play = () => this.player.play();
-  pause = () => this.player.pause();
-  stop = () => this.player.stop();
-  togglePlay = () => this.player.togglePlay();
-  restart = () => this.player.restart();
-  getCurrentTime = () => this.player.getCurrentTime();
-  getDuration = () => this.player.getDuration();
-  getVolume = () => this.player.getVolume();
-  isMuted = () => this.player.isMuted();
-  isPaused = () => this.player.isPaused();
-  toggleMute = () => this.player.toggleMute();
+  getType = () => this.player && this.player.getType();
+  isReady = () => this.player && this.player.isReady();
+  play = () => this.player && this.player.play();
+  pause = () => this.player && this.player.pause();
+  stop = () => this.player && this.player.stop();
+  togglePlay = () => this.player && this.player.togglePlay();
+  restart = () => this.player && this.player.restart();
+  getCurrentTime = () => this.player && this.player.getCurrentTime();
+  getDuration = () => this.player && this.player.getDuration();
+  getVolume = () => this.player && this.player.getVolume();
+  isMuted = () => this.player && this.player.isMuted();
+  isPaused = () => this.player && this.player.isPaused();
+  toggleMute = () => this.player && this.player.toggleMute();
 
   componentDidMount() {
     const options = {
@@ -120,45 +120,47 @@ class Plyr extends Component {
 
     this.player = plyr.setup('.react-plyr', options)[0];
 
-    this.player.on('ready', () => {
-      this.props.onReady && this.props.onReady();
-    });
+    if (this.player) {
+      this.player.on('ready', () => {
+        this.props.onReady && this.props.onReady();
+      });
 
-    this.player.on('play', () => {
-      this.props.onPlay && this.props.onPlay();
-    });
+      this.player.on('play', () => {
+        this.props.onPlay && this.props.onPlay();
+      });
 
-    this.player.on('pause', () => {
-      this.props.onPause && this.props.onPause();
-    });
+      this.player.on('pause', () => {
+        this.props.onPause && this.props.onPause();
+      });
 
-    this.player.on('ended', () => {
-      this.props.onEnd && this.props.onEnd();
-    });
+      this.player.on('ended', () => {
+        this.props.onEnd && this.props.onEnd();
+      });
 
-    this.player.on('seeked', event => {
-      const time = event.detail.plyr.getCurrentTime();
-      this.props.onSeeked && this.props.onSeeked(time);
-    });
+      this.player.on('seeked', event => {
+        const time = event.detail.plyr.getCurrentTime();
+        this.props.onSeeked && this.props.onSeeked(time);
+      });
 
-    this.player.on('enterfullscreen', () => {
-      this.props.onEnterFullscreen && this.props.onEnterFullscreen();
-    });
+      this.player.on('enterfullscreen', () => {
+        this.props.onEnterFullscreen && this.props.onEnterFullscreen();
+      });
 
-    this.player.on('exitfullscreen', () => {
-      this.props.onExitFullscreen && this.props.onExitFullscreen();
-    });
+      this.player.on('exitfullscreen', () => {
+        this.props.onExitFullscreen && this.props.onExitFullscreen();
+      });
 
-    this.player.on('volumechange', event => {
-      const isMuted = event.detail.plyr.isMuted();
-      const volume = event.detail.plyr.getVolume();
+      this.player.on('volumechange', event => {
+        const isMuted = event.detail.plyr.isMuted();
+        const volume = event.detail.plyr.getVolume();
 
-      this.props.onVolumeChange && this.props.onVolumeChange({ isMuted, volume });
-    });
+        this.props.onVolumeChange && this.props.onVolumeChange({ isMuted, volume });
+      });
+    }
   }
 
   componentWillUnmount() {
-    this.player.destroy();
+    this.player && this.player.destroy();
   }
 
   render() {
