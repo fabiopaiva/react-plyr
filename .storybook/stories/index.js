@@ -13,6 +13,37 @@ stories.addWithInfo('Default Youtube video', () => (
     videoId="CDFN1VatiJA"
   />
 ))
+
+stories.addWithInfo('Default video with file address', () => (
+  <Plyr
+    type="video"
+    url="https://api.clipman.com/media/download?videoUrl=https%3A%2F%2Fclipman-video-server-production.s3.eu-central-1.amazonaws.com%2Fuploads%2F598205fd8f294f3b6293c41a%2Ftmp-31444wOuKCU2xG0J3.mp4&title=Clipman-funny-video"
+    poster="http://wallpaperget.com/images/amazing-car-wallpapers-42.jpg"
+  />
+))
+
+stories.addWithInfo('Default video with multiple file addresses', () => (
+  <Plyr
+    type="video"
+    sources={
+      [
+        {
+          src: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+          type: 'video/mp4'
+        },
+        {
+          src: 'http://clips.vorwaerts-gmbh.de/VfE.ogv',
+          type: 'video/ogg'
+        },
+        {
+          src: 'http://clips.vorwaerts-gmbh.de/VfE.webm',
+          type: 'video/webm'
+        }
+      ]
+    }
+  />
+))
+
 stories.addWithInfo('Default Vimeo video', () => (
   <Plyr
     type="vimeo"

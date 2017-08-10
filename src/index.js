@@ -42,8 +42,17 @@ class Plyr extends Component {
   };
 
   static propTypes = {
-    type: PropTypes.oneOf(['youtube', 'vimeo']),
-    videoId: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(['youtube', 'vimeo', 'video']),
+    videoId: PropTypes.string,
+    url: PropTypes.string,
+    poster: PropTypes.string,
+    sources: PropTypes.arrayOf(
+      PropTypes.shape({
+        src: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired
+      })
+    ),
+    
     onReady: PropTypes.func,
     onPlay: PropTypes.func,
     onPause: PropTypes.func,
@@ -117,7 +126,7 @@ class Plyr extends Component {
       displayDuration: this.props.displayDuration,
       storage: this.props.storage
     };
-
+    
     this.player = plyr.setup('.react-plyr', options)[0];
 
     if (this.player) {
@@ -162,8 +171,9 @@ class Plyr extends Component {
   componentWillUnmount() {
     this.player && this.player.destroy();
   }
-
-  render() {
+  
+  // For video support for plyr supported videos using videoId ( Youtube and Vimeo for now ).
+  renderPlayerWithVideoId() {
     return (
       <div className="react-plyr" style={this.props.style}>
         <div
@@ -171,7 +181,45 @@ class Plyr extends Component {
           data-video-id={this.props.videoId}
         />
       </div>
-    );
+    ); 
+  }
+  
+  // For video support for source defined as link to those video files.
+  renderPlayerWithSRC() {
+    let toRender;
+    
+    if(this.props.sources && Array.isArray(this.props.sources) && this.props.sources.length) {
+      toRender = (
+        <video className='react-plyr'>
+          {
+            this.props.sources.map(function(source, index) {
+              return (
+                <source src={source.src} type={source.type} />
+              );
+            })
+          }
+        </video>
+      );
+    } else {
+      toRender = (
+        <video
+          className='react-plyr'
+          src={this.props.url}
+          preload='none'
+          poster={this.props.poster}
+        />
+      );
+    }
+    
+    return toRender;
+  }
+
+  render() {
+    if(this.props.type === 'video')
+      return this.renderPlayerWithSRC();
+    else {
+      return this.renderPlayerWithVideoId();
+    }
   }
 }
 
