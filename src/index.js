@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import plyr from 'plyr';
 
 class Plyr extends Component {
@@ -52,7 +53,7 @@ class Plyr extends Component {
         type: PropTypes.string.isRequired
       })
     ),
-    
+
     onReady: PropTypes.func,
     onPlay: PropTypes.func,
     onPause: PropTypes.func,
@@ -126,7 +127,7 @@ class Plyr extends Component {
       displayDuration: this.props.displayDuration,
       storage: this.props.storage
     };
-    
+
     this.player = plyr.setup('.react-plyr', options)[0];
 
     if (this.player) {
@@ -171,7 +172,7 @@ class Plyr extends Component {
   componentWillUnmount() {
     this.player && this.player.destroy();
   }
-  
+
   // For video support for plyr supported videos using videoId ( Youtube and Vimeo for now ).
   renderPlayerWithVideoId() {
     return (
@@ -181,13 +182,13 @@ class Plyr extends Component {
           data-video-id={this.props.videoId}
         />
       </div>
-    ); 
+    );
   }
-  
+
   // For video support for source defined as link to those video files.
   renderPlayerWithSRC() {
     let toRender;
-    
+
     if(this.props.sources && Array.isArray(this.props.sources) && this.props.sources.length) {
       toRender = (
         <video className='react-plyr'>
@@ -210,7 +211,7 @@ class Plyr extends Component {
         />
       );
     }
-    
+
     return toRender;
   }
 
