@@ -16,7 +16,7 @@ class Plyr extends Component {
     enabled: true,
     controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'fullscreen'],
     loadSprite: true,
-    // iconUrl: null,
+    iconUrl: null,
     iconPrefix: 'plyr',
     debug: false,
     autoplay: false,
@@ -66,7 +66,7 @@ class Plyr extends Component {
     enabled: PropTypes.bool,
     controls: PropTypes.arrayOf(PropTypes.string),
     loadSprite: PropTypes.bool,
-    // iconUrl: PropTypes.string,
+    iconUrl: PropTypes.string,
     iconPrefix: PropTypes.string,
     debug: PropTypes.bool,
     autoplay: PropTypes.bool,
@@ -111,7 +111,7 @@ class Plyr extends Component {
       enabled: this.props.enabled,
       controls: this.props.controls,
       loadSprite: this.props.loadSprite,
-      // iconUrl: this.props.iconUrl,
+      iconUrl: this.props.iconUrl,
       iconPrefix: this.props.iconPrefix,
       debug: this.props.debug,
       autoplay: this.props.autoplay,
@@ -127,6 +127,10 @@ class Plyr extends Component {
       displayDuration: this.props.displayDuration,
       storage: this.props.storage
     };
+
+    if (!options.iconUrl) {
+      delete options.iconUrl;
+    }
 
     this.player = plyr.setup('.react-plyr', options)[0];
 
