@@ -4598,9 +4598,9 @@ pluralize@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
 
-plyr@^2.0.12:
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/plyr/-/plyr-2.0.12.tgz#e999d07a0e9e5f3747b00637e46c051675a36d0d"
+plyr@^2.0.18:
+  version "2.0.18"
+  resolved "https://registry.yarnpkg.com/plyr/-/plyr-2.0.18.tgz#91ebb7ffe6a61f4517a8c88ed04036fe95101f4f"
 
 podda@^1.2.1:
   version "1.2.2"

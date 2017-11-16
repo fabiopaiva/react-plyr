@@ -1,6 +1,6 @@
 {
   "name": "react-plyr",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "A simple, accessible HTML5 media player React Component",
   "main": "lib/index.js",
   "author": "Jose Miguel Bejarano",
@@ -46,7 +46,7 @@
     "rimraf": "^2.6.1"
   },
   "dependencies": {
-    "plyr": "^2.0.12"
+    "plyr": "^2.0.18"
   },
   "peerDependencies": {
     "react": "15.x"
