@@ -36,6 +36,7 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <Plyr
         autoplay={false}
+        className="react-plyr"
         clickToPlay={true}
         controls={
                 Array [
@@ -100,6 +101,7 @@ ShallowWrapper {
         "player": null,
         "props": Object {
           "autoplay": false,
+          "className": "react-plyr",
           "clickToPlay": true,
           "controls": Array [
             "play-large",
@@ -194,6 +196,7 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <Plyr
     autoplay={false}
+    className="react-plyr"
     clickToPlay={true}
     controls={
         Array [
@@ -279,6 +282,7 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <Plyr
         autoplay={false}
+        className="react-plyr"
         clickToPlay={true}
         controls={
                 Array [
@@ -343,6 +347,7 @@ ShallowWrapper {
         "player": null,
         "props": Object {
           "autoplay": false,
+          "className": "react-plyr",
           "clickToPlay": true,
           "controls": Array [
             "play-large",
@@ -437,6 +442,7 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <Plyr
     autoplay={false}
+    className="react-plyr"
     clickToPlay={true}
     controls={
         Array [
