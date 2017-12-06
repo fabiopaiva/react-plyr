@@ -1,5 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+
 import Plyr from './index';
 
 it('renders a simple Youtube Video', () => {
@@ -9,7 +11,7 @@ it('renders a simple Youtube Video', () => {
       videoId="CDFN1VatiJA"
     />
   );
-  expect(wrapper).toMatchSnapshot();
+  expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it('renders a simple Vimeo Video', () => {
@@ -19,5 +21,5 @@ it('renders a simple Vimeo Video', () => {
       videoId="https://vimeo.com/189789787"
     />
   );
-  expect(wrapper).toMatchSnapshot();
+  expect(toJson(wrapper)).toMatchSnapshot();
 });

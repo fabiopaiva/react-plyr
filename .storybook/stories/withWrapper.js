@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { storiesOf } from '@kadira/storybook';
-import { withKnobs, text, number, select } from '@kadira/storybook-addon-knobs';
+import { storiesOf } from '@storybook/react';
+// import { withKnobs, text, number, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { withInfo } from '@storybook/addon-info';
 
 import Plyr from '../../src';
 
 const stories = storiesOf('React Plyr', module);
-stories.addDecorator(withKnobs);
 
 class Wrapper extends Component {
   constructor(props) {
@@ -59,17 +60,16 @@ class Wrapper extends Component {
     return (
       <div>
         <Plyr
-          videoId="MM0XgD89Tr8"
-          // autoplay
-          onReady={console.log('Is Ready!')}
+          videoId="yGh0bjzj4IQ"
+          onReady={action('Is Ready!')}
           onPlay={this.handlePlay}
           onPause={this.handlePause}
-          onEnd={() => console.log('Video has finished!')}
-          onEnterFullscreen={() => console.log('Fullscreen is enabled')}
-          onExitFullscreen={() => console.log('Fullscreen is disabled')}
-          onVolumeChange={volume => console.log('volume changed', volume)}
-          onSeeked={time => console.log('seeked!', time)}
-          ref={ply => this.plyr = ply}
+          onEnd={() => action('Video has finished!')}
+          onEnterFullscreen={() => action('Fullscreen is enabled')}
+          onExitFullscreen={() => action('Fullscreen is disabled')}
+          onVolumeChange={action('Volume changed')}
+          onSeeked={action('Seeked!')}
+          ref={plyr => this.plyr = plyr}
         />
 
         <hr/>
@@ -89,6 +89,6 @@ class Wrapper extends Component {
   }
 }
 
-export default stories.addWithInfo('External State', () => (
+export default stories.add('External State', withInfo()(() =>
   <Wrapper />
 ));

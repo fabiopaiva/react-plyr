@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
-import { storiesOf } from '@kadira/storybook';
-import { withKnobs, text, number, select } from '@kadira/storybook-addon-knobs';
-import withWrapper from './withWrapper'
+import { storiesOf } from '@storybook/react';
+// import { withKnobs, text, number, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { withInfo } from '@storybook/addon-info';
+
+import './withWrapper';
 
 import Plyr from '../../src';
 
 const stories = storiesOf('React Plyr', module);
-stories.addDecorator(withKnobs);
 
-stories.addWithInfo('Default Youtube video', () => (
+stories.add('Simple Youtube video', withInfo()(() =>
   <Plyr
     videoId="CDFN1VatiJA"
   />
 ))
 
-stories.addWithInfo('Default video with file address', () => (
+stories.add('Simple Vimeo video', withInfo()(() =>
+  <Plyr
+    type="vimeo"
+    videoId="https://vimeo.com/189789787"
+  />
+))
+
+stories.add('Default video with file address', withInfo()(() =>
   <Plyr
     type="video"
     url="https://api.clipman.com/media/download?videoUrl=https%3A%2F%2Fclipman-video-server-production.s3.eu-central-1.amazonaws.com%2Fuploads%2F598205fd8f294f3b6293c41a%2Ftmp-31444wOuKCU2xG0J3.mp4&title=Clipman-funny-video"
@@ -22,7 +31,7 @@ stories.addWithInfo('Default video with file address', () => (
   />
 ))
 
-stories.addWithInfo('Default video with multiple file addresses', () => (
+stories.add('Default video with multiple file addresses', withInfo()(() =>
   <Plyr
     type="video"
     sources={
@@ -44,23 +53,17 @@ stories.addWithInfo('Default video with multiple file addresses', () => (
   />
 ))
 
-stories.addWithInfo('Default Vimeo video', () => (
+stories.add('Player with autoplay and callbacks', withInfo()(() =>
   <Plyr
-    type="vimeo"
-    videoId="https://vimeo.com/189789787"
-  />
-))
-stories.addWithInfo('Player with autoplay and callbacks', () => (
-  <Plyr
-    videoId="MM0XgD89Tr8"
+    videoId="M6_a2wBK-yc"
     autoplay
-    onReady={console.log('Is Ready!')}
-    onPlay={() => console.log('Play!')}
-    onPause={() => console.log('Paused!')}
-    onEnd={() => console.log('Video has finished!')}
-    onEnterFullscreen={() => console.log('Fullscreen is enabled')}
-    onExitFullscreen={() => console.log('Fullscreen is disabled')}
-    onVolumeChange={volume => console.log('volume changed', volume)}
-    onSeeked={time => console.log('seeked!', time)}
+    onReady={action('Video is ready!')}
+    onPlay={action('Play!')}
+    onPause={action('Video paused')}
+    onEnd={action('Video has finished!')}
+    onEnterFullscreen={action('Fullscreen is enabled')}
+    onExitFullscreen={action('Fullscreen is disabled')}
+    onVolumeChange={action('volume changed')}
+    onSeeked={action('Seeked')}
   />
 ));
