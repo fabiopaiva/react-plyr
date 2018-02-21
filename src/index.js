@@ -44,7 +44,7 @@ class Plyr extends Component {
   };
 
   static propTypes = {
-    type: PropTypes.oneOf(['youtube', 'vimeo', 'video']),
+    type: PropTypes.oneOf(['youtube', 'vimeo', 'video', 'audio']),
     className: PropTypes.string,
     videoId: PropTypes.string,
     url: PropTypes.string,
@@ -236,12 +236,43 @@ class Plyr extends Component {
     }
   }
 
-  render() {
-    if (this.props.type === 'video')
-      return this.renderPlayerWithSRC();
-    else {
-      return this.renderPlayerWithVideoId();
+  renderAudioPlayer() {
+    const {
+      sources,
+      url,
+      preload,
+      className,
+    } = this.props;
+
+    if (sources && Array.isArray(sources) && sources.length) {
+      return (
+        <audio
+          className={className}
+          preload={preload}
+        >
+          {sources.map((source, index) =>
+            <source key={index} src={source.src} type={source.type} />
+          )}
+        </audio>
+      )
+    } else {
+      return (
+        <audio
+          className={className}
+          preload={preload}
+          src={url}
+        />
+      )
     }
+  }
+
+  render() {
+    if (this.props.type === 'audio')
+      return this.renderAudioPlayer();
+    else if (this.props.type === 'video')
+      return this.renderPlayerWithSRC();
+    else
+      return this.renderPlayerWithVideoId();
   }
 }
 

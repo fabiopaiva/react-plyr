@@ -66,4 +66,29 @@ stories.add('Player with autoplay and callbacks', withInfo()(() =>
     onVolumeChange={action('volume changed')}
     onSeeked={action('Seeked')}
   />
-));
+))
+
+stories.add('Audio player with url', withInfo()(() =>
+  <Plyr
+    type="audio"
+    url="https://archive.org/download/testmp3testfile/mpthreetest.mp3"
+  />
+))
+
+stories.add('Audio player with sources', withInfo()(() =>
+  <Plyr
+    type="audio"
+    sources={
+      [
+        {
+          src: "https://archive.org/download/testmp3testfile/mpthreetest.ogg",
+          type: "audio/ogg"
+        },
+        {
+          src: "https://archive.org/download/testmp3testfile/mpthreetest.mp3",
+          type: "audio/mpeg"
+        }
+      ]
+    }
+  />
+))

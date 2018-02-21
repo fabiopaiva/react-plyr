@@ -38,7 +38,7 @@ render() {
 
 |Name|Type|Required|Default|
 |----|----|----|----|
-|type|`oneOf('youtube','vimeo','video')`||`'youtube'`|
+|type|`oneOf('youtube','vimeo','video','audio')`||`'youtube'`|
 |className|`string`||`'react-plyr'`|
 |videoId|`string`|||
 |url|`string`|||
