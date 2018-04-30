@@ -96,19 +96,18 @@ class Plyr extends Component {
     }),
   }
 
-  getType = () => this.player && this.player.getType();
-  isReady = () => this.player && this.player.isReady();
+  getType = () => this.player && this.player.source && this.player.source.type;
   play = () => this.player && this.player.play();
   pause = () => this.player && this.player.pause();
   stop = () => this.player && this.player.stop();
   togglePlay = () => this.player && this.player.togglePlay();
   restart = () => this.player && this.player.restart();
-  getCurrentTime = () => this.player && this.player.getCurrentTime();
-  getDuration = () => this.player && this.player.getDuration();
-  getVolume = () => this.player && this.player.getVolume();
-  isMuted = () => this.player && this.player.isMuted();
-  isPaused = () => this.player && this.player.isPaused();
-  toggleMute = () => this.player && this.player.toggleMute();
+  getCurrentTime = () => this.player && this.player.currentTime;
+  getDuration = () => this.player && this.player.duration;
+  getVolume = () => this.player && this.player.volume;
+  isMuted = () => this.player && this.player.muted;
+  isPaused = () => this.player && this.player.paused;
+  toggleMute = () => this.player && this.player.toggleControls(this.player.muted);
 
   componentDidMount() {
     const options = {
@@ -137,7 +136,7 @@ class Plyr extends Component {
     }
 
     const selector = `.${this.props.className.replace(/ /g, '.')}`
-    this.player = plyr.setup(selector, options)[0];
+    this.player = new plyr(selector, options);
 
     if (this.player) {
       this.player.on('ready', () => {
@@ -174,9 +173,7 @@ class Plyr extends Component {
       });
 
       this.player.on('volumechange', event => {
-        const isMuted = event.detail.plyr.isMuted();
-        const volume = event.detail.plyr.getVolume();
-
+        const { muted: isMuted, volume } = this.player;
         this.props.onVolumeChange && this.props.onVolumeChange({ isMuted, volume });
       });
     }
@@ -189,12 +186,12 @@ class Plyr extends Component {
   // For video support for plyr supported videos using videoId (Youtube and Vimeo for now).
   renderPlayerWithVideoId() {
     return (
-      <div className={this.props.className} style={this.props.style}>
-        <div
-          data-type={this.props.type}
-          data-video-id={this.props.videoId}
-        />
-      </div>
+      <div
+        className={this.props.className}
+        style={this.props.style}
+        data-plyr-provider={this.props.type}
+        data-plyr-embed-id={this.props.videoId}
+      />
     );
   }
 

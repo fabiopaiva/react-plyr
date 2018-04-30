@@ -3,21 +3,15 @@
 exports[`renders a simple Vimeo Video 1`] = `
 <div
   className="react-plyr"
->
-  <div
-    data-type="vimeo"
-    data-video-id="https://vimeo.com/189789787"
-  />
-</div>
+  data-plyr-embed-id="https://vimeo.com/189789787"
+  data-plyr-provider="vimeo"
+/>
 `;
 
 exports[`renders a simple Youtube Video 1`] = `
 <div
   className="react-plyr"
->
-  <div
-    data-type="youtube"
-    data-video-id="CDFN1VatiJA"
-  />
-</div>
+  data-plyr-embed-id="CDFN1VatiJA"
+  data-plyr-provider="youtube"
+/>
 `;
