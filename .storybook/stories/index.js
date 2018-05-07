@@ -11,12 +11,10 @@ import Plyr from '../../src';
 const stories = storiesOf('React Plyr', module);
 
 stories.add('Simple Youtube video', withInfo()(() =>
-  <Plyr
-    videoId="CDFN1VatiJA"
-  />
+  <Plyr videoId="CDFN1VatiJA" debug />
 ))
 
-stories.add('Video with Settings & Controls', withInfo()(() =>
+stories.add('Video with all Controls', withInfo()(() =>
   <Plyr
     videoId="https://youtube.com/watch?v=bTqVqk7FSmY"
     controls={[
@@ -36,7 +34,6 @@ stories.add('Video with Settings & Controls', withInfo()(() =>
       'airplay', // Airplay (currently Safari only)
       'fullscreen', // Toggle fullscreen
     ]}
-    debug
   />
 ))
 
@@ -50,30 +47,39 @@ stories.add('Simple Vimeo video', withInfo()(() =>
 stories.add('Default video with file address', withInfo()(() =>
   <Plyr
     type="video"
-    url="https://api.clipman.com/media/download?videoUrl=https%3A%2F%2Fclipman-video-server-production.s3.eu-central-1.amazonaws.com%2Fuploads%2F598205fd8f294f3b6293c41a%2Ftmp-31444wOuKCU2xG0J3.mp4&title=Clipman-funny-video"
-    poster="http://wallpaperget.com/images/amazing-car-wallpapers-42.jpg"
+    url="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4"
+    title="View From A Blue Moon"
+    poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg"
   />
 ))
 
 stories.add('Default video with multiple file addresses', withInfo()(() =>
   <Plyr
     type="video"
-    sources={
-      [
-        {
-          src: 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
-          type: 'video/mp4'
-        },
-        {
-          src: 'http://clips.vorwaerts-gmbh.de/VfE.ogv',
-          type: 'video/ogg'
-        },
-        {
-          src: 'http://clips.vorwaerts-gmbh.de/VfE.webm',
-          type: 'video/webm'
-        }
-      ]
-    }
+    title="View From A Blue Moon"
+    poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg"
+    sources={[
+      {
+        src: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4',
+        type: 'video/mp4',
+        size: 576,
+      },
+      {
+        src: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4',
+        type: 'video/mp4',
+        size: 720,
+      },
+      {
+        src: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4',
+        type: 'video/mp4',
+        size: 1080,
+      },
+      {
+        src: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1440p.mp4',
+        type: 'video/mp4',
+        size: 1440,
+      },
+    ]}
   />
 ))
 
@@ -103,17 +109,15 @@ stories.add('Audio player with url', withInfo()(() =>
 stories.add('Audio player with sources', withInfo()(() =>
   <Plyr
     type="audio"
-    sources={
-      [
-        {
-          src: "https://archive.org/download/testmp3testfile/mpthreetest.ogg",
-          type: "audio/ogg"
-        },
-        {
-          src: "https://archive.org/download/testmp3testfile/mpthreetest.mp3",
-          type: "audio/mpeg"
-        }
-      ]
-    }
+    sources={[
+      {
+        src: "https://archive.org/download/testmp3testfile/mpthreetest.ogg",
+        type: "audio/ogg"
+      },
+      {
+        src: "https://archive.org/download/testmp3testfile/mpthreetest.mp3",
+        type: "audio/mpeg"
+      }
+    ]}
   />
 ))

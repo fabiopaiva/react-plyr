@@ -113,7 +113,8 @@ class Plyr extends Component {
     sources: PropTypes.arrayOf(
       PropTypes.shape({
         src: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired
+        type: PropTypes.string.isRequired,
+        size: PropTypes.string
       })
     )
   }
@@ -121,22 +122,24 @@ class Plyr extends Component {
   getType = () => this.player && this.player.source && this.player.source.type;
   play = () => this.player && this.player.play();
   pause = () => this.player && this.player.pause();
+  togglePlay = () => this.player && this.player.togglePlay();
   stop = () => this.player && this.player.stop();
+  restart = () => this.player && this.player.restart();
   rewind = time => this.player && this.player.rewind(time);
   forward = time => this.player && this.player.forward(time);
-  togglePlay = () => this.player && this.player.togglePlay();
-  restart = () => this.player && this.player.restart();
   getCurrentTime = () => this.player && this.player.currentTime;
   getDuration = () => this.player && this.player.duration;
   getVolume = () => this.player && this.player.volume;
   isMuted = () => this.player && this.player.muted;
   isPaused = () => this.player && this.player.paused;
   toggleMute = () => this.player && this.player.toggleControls(this.player.muted);
-  setMuted = (muted = true ) => this.player.muted = muted;
+  setMuted = (muted = true) => this.player.muted = muted;
   increaseVolume = step => this.player && this.player.increaseVolume(step);
   decreaseVolume = step => this.player && this.player.decreaseVolume(step);
   setVolume = amount => this.player.volume = amount;
-
+  enterFullscreen = () => this.player && this.player.fullscreen.enter();
+  exitFullscreen = () => this.player && this.player.fullscreen.exit();
+  toggleFullscreen = () => this.player && this.player.fullscreen.toggle()
 
   componentDidMount() {
     const defaultOptions = Object.keys(defaultProps).reduce((acc, current) => ({
@@ -246,7 +249,12 @@ class Plyr extends Component {
           poster={poster}
         >
           {sources.map((source, index) =>
-            <source key={index} src={source.src} type={source.type} />
+            <source
+              key={index}
+              src={source.src}
+              type={source.type}
+              size={source.size && source.size}
+            />
           )}
         </video>
       )

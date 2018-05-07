@@ -14,20 +14,47 @@ class Wrapper extends Component {
 
     this.state = {
       muted: false,
-      isPlaying: false,
-      isPaused: false,
-      isStopped: true
+      playerState: 'isStopped'
+    }
+  }
 
+  getState = state => {
+    switch (state) {
+      case 'isPlaying':
+        return '▶️';
+      case 'isPaused':
+        return '⏸'
+      case 'isStopped':
+        return '⏹'
+      default:
+        '⏺';
     }
   }
 
   handlePlay = () => {
     this.plyr.play();
-    this.setState({
-      isPlaying: true,
-      isPaused: false,
-      isStopped: false
-    });
+    this.setState({ playerState: 'isPlaying' });
+  }
+
+  handleToogle = () => {
+    this.plyr.togglePlay();
+    this.setState(state => ({
+      playerState: state === 'isPlaying' ? 'isPaused' : 'isPlaying'
+    }));
+  }
+
+  handlePause = () => {
+    this.plyr.pause();
+    this.setState({ playerState: 'isPaused' });
+  }
+
+  handleStop = () => {
+    this.plyr.stop();
+    this.setState({ playerState: 'isStopped' });
+  }
+
+  handleRestart = () => {
+    this.plyr.restart();
   }
 
   handleRewind = () => {
@@ -36,33 +63,6 @@ class Wrapper extends Component {
 
   handleForward = () => {
     this.plyr.forward();
-  }
-
-  handleToogle = () => {
-    this.plyr.togglePlay();
-    this.setState({
-      isPlaying: !this.state.isPlaying,
-      isPaused:  !this.state.isPaused,
-      isStopped: !this.state.isStopped
-    });
-  }
-
-  handlePause = () => {
-    this.plyr.pause();
-    this.setState({
-      isPlaying: false,
-      isPaused: true,
-      isStopped: false
-    });
-  }
-
-  handleStop = () => {
-    this.plyr.stop();
-    this.setState({
-      isPlaying: false,
-      isPaused: false,
-      isStopped: true
-    });
   }
 
   handleMute = () => {
@@ -88,6 +88,7 @@ class Wrapper extends Component {
           videoId="yGh0bjzj4IQ"
           muted={this.state.muted}
           volume={0.5}
+          hideControls={false}
           onReady={action('Is Ready!')}
           // controls={[]}
           onPlay={this.handlePlay}
@@ -108,6 +109,7 @@ class Wrapper extends Component {
         <button onClick={this.handleToogle}>️⏯ Toggle Playing</button>
         <button onClick={this.handlePause}>️⏸️ Pause</button>
         <button onClick={this.handleStop}>️⏹ Stop</button>
+        <button onClick={this.handleRestart}>️🔄 Restart</button>
 
         <hr/>
 
@@ -118,9 +120,7 @@ class Wrapper extends Component {
 
         <hr/>
 
-        <h4>Playing: {this.state.isPlaying ? '✅' : '❌'}</h4>
-        <h4>Paused: {this.state.isPaused ? '✅' : '❌'}</h4>
-        <h4>Stopped: {this.state.isStopped ? '✅' : '❌'}</h4>
+        <h4>State: {this.getState(this.state.playerState)}</h4>
       </div>
     );
   }
