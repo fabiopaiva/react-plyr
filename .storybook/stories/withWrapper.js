@@ -13,6 +13,7 @@ class Wrapper extends Component {
     super(props);
 
     this.state = {
+      muted: false,
       isPlaying: false,
       isPaused: false,
       isStopped: true
@@ -27,6 +28,14 @@ class Wrapper extends Component {
       isPaused: false,
       isStopped: false
     });
+  }
+
+  handleRewind = () => {
+    this.plyr.rewind();
+  }
+
+  handleForward = () => {
+    this.plyr.forward();
   }
 
   handleToogle = () => {
@@ -56,17 +65,36 @@ class Wrapper extends Component {
     });
   }
 
+  handleMute = () => {
+    this.setState({ muted: true })
+  }
+
+  handleDecreaseVolume = step => {
+    this.plyr.decreaseVolume(step);
+  }
+
+  handleIncreaseVolume = step => {
+    this.plyr.increaseVolume(step);
+  }
+
+  handleSetFullVolume = amount => {
+    this.plyr.setVolume(amount);
+  }
+
   render() {
     return (
       <div>
         <Plyr
           videoId="yGh0bjzj4IQ"
+          muted={this.state.muted}
+          volume={0.5}
           onReady={action('Is Ready!')}
+          // controls={[]}
           onPlay={this.handlePlay}
           onPause={this.handlePause}
-          onEnd={() => action('Video has finished!')}
-          onEnterFullscreen={() => action('Fullscreen is enabled')}
-          onExitFullscreen={() => action('Fullscreen is disabled')}
+          onEnd={action('Video has finished!')}
+          onEnterFullscreen={action('Fullscreen is enabled')}
+          onExitFullscreen={action('Fullscreen is disabled')}
           onVolumeChange={action('Volume changed')}
           onSeeked={action('Seeked!')}
           ref={plyr => this.plyr = plyr}
@@ -74,10 +102,19 @@ class Wrapper extends Component {
 
         <hr/>
 
+        <button onClick={this.handleRewind}>️⏪ Rewind</button>
         <button onClick={this.handlePlay}>️▶️ Play</button>
+        <button onClick={this.handleForward}>️⏩ Forward</button>
         <button onClick={this.handleToogle}>️⏯ Toggle Playing</button>
         <button onClick={this.handlePause}>️⏸️ Pause</button>
         <button onClick={this.handleStop}>️⏹ Stop</button>
+
+        <hr/>
+
+        <button onClick={this.handleMute}>️🔇 Mute</button>
+        <button onClick={() => this.handleDecreaseVolume(0.2)}>️🔉 Decrease volume</button>
+        <button onClick={() => this.handleIncreaseVolume(0.2)}>️🔊 Increase volume</button>
+        <button onClick={() => this.handleSetFullVolume(1)}>️🔊 Set volume to full</button>
 
         <hr/>
 
@@ -89,6 +126,6 @@ class Wrapper extends Component {
   }
 }
 
-export default stories.add('External State', withInfo()(() =>
+export default stories.add('External Controls & State', withInfo()(() =>
   <Wrapper />
 ));

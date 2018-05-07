@@ -16,7 +16,7 @@ stories.add('Simple Youtube video', withInfo()(() =>
   />
 ))
 
-stories.add('Video with Settings', withInfo()(() =>
+stories.add('Video with Settings & Controls', withInfo()(() =>
   <Plyr
     videoId="https://youtube.com/watch?v=bTqVqk7FSmY"
     controls={[
@@ -29,12 +29,12 @@ stories.add('Video with Settings', withInfo()(() =>
       'current-time', // The current time of playback
       'duration', // The full duration of the media
       'mute', // Toggle mute
-      // 'volume', // Volume control
+      'volume', // Volume control
       'captions', // Toggle captions
-      // 'settings', // Settings menu
+      'settings', // Settings menu
       'pip', // Picture-in-picture (currently Safari only)
       'airplay', // Airplay (currently Safari only)
-      // 'fullscreen', // Toggle fullscreen
+      'fullscreen', // Toggle fullscreen
     ]}
     debug
   />
@@ -80,14 +80,15 @@ stories.add('Default video with multiple file addresses', withInfo()(() =>
 stories.add('Player with autoplay and callbacks', withInfo()(() =>
   <Plyr
     videoId="M6_a2wBK-yc"
+    volume={0.4}
     autoplay
     onReady={action('Video is ready!')}
     onPlay={action('Play!')}
-    onPause={action('Video paused')}
+    onPause={action('Video is paused')}
     onEnd={action('Video has finished!')}
     onEnterFullscreen={action('Fullscreen is enabled')}
     onExitFullscreen={action('Fullscreen is disabled')}
-    onVolumeChange={action('volume changed')}
+    onVolumeChange={action('Volume changed')}
     onSeeked={action('Seeked')}
   />
 ))

@@ -9,7 +9,15 @@ class Plyr extends Component {
     super();
 
     this.player = null;
+
+    this.state = {
+      muted: null
+    }
   }
+
+  static getDerivedStateFromProps = nextProps => ({
+    muted: nextProps.muted
+  });
 
   // Specifies the default values for props:
   static defaultProps = {
@@ -31,8 +39,12 @@ class Plyr extends Component {
     onEnd: PropTypes.func,
     onLoadedData: PropTypes.func,
     onSeeked: PropTypes.func,
+    onTimeUpdate: PropTypes.func,
     onEnterFullscreen: PropTypes.func,
+    onExitFullscreen: PropTypes.func,
     onVolumeChange: PropTypes.func,
+    onCaptionsEnabled: PropTypes.func,
+    onCaptionsDisabled: PropTypes.func,
 
     // plyr props
     enabled: PropTypes.bool,
@@ -110,20 +122,32 @@ class Plyr extends Component {
   play = () => this.player && this.player.play();
   pause = () => this.player && this.player.pause();
   stop = () => this.player && this.player.stop();
+  rewind = time => this.player && this.player.rewind(time);
+  forward = time => this.player && this.player.forward(time);
   togglePlay = () => this.player && this.player.togglePlay();
   restart = () => this.player && this.player.restart();
-  getCurrentTime = () => this.player && this.player.currentTime();
+  getCurrentTime = () => this.player && this.player.currentTime;
   getDuration = () => this.player && this.player.duration;
   getVolume = () => this.player && this.player.volume;
   isMuted = () => this.player && this.player.muted;
   isPaused = () => this.player && this.player.paused;
   toggleMute = () => this.player && this.player.toggleControls(this.player.muted);
+  setMuted = (muted = true ) => this.player.muted = muted;
+  increaseVolume = step => this.player && this.player.increaseVolume(step);
+  decreaseVolume = step => this.player && this.player.decreaseVolume(step);
+  setVolume = amount => this.player.volume = amount;
+
 
   componentDidMount() {
-    const options = Object.keys(defaultProps).reduce((acc, current) => ({
+    const defaultOptions = Object.keys(defaultProps).reduce((acc, current) => ({
       ...acc,
       [current]: this.props[current]
     }), {});
+
+    const options = {
+      ...defaultOptions,
+      muted: this.state.muted
+    };
 
     const selector = `.${this.props.className.replace(/ /g, '.')}`
     this.player = new plyr(selector, options);
@@ -149,9 +173,14 @@ class Plyr extends Component {
         this.props.onLoadedData && this.props.onLoadedData();
       });
 
-      // TODO: return the time
-      this.player.on('seeked', event => {
-        this.props.onSeeked && this.props.onSeeked();
+      this.player.on('seeked', () => {
+        const time = this.getCurrentTime();
+        this.props.onSeeked && this.props.onSeeked(time);
+      });
+
+      this.player.on('timeupdate', () => {
+        const time = this.getCurrentTime();
+        this.props.onTimeUpdate && this.props.onTimeUpdate(time);
       });
 
       this.player.on('enterfullscreen', () => {
@@ -166,6 +195,20 @@ class Plyr extends Component {
         const { muted, volume } = this.player;
         this.props.onVolumeChange && this.props.onVolumeChange({ muted, volume });
       });
+
+      this.player.on('captionsenabled', () => {
+        this.props.onCaptionsEnabled && this.props.onCaptionsEnabled();
+      });
+
+      this.player.on('captionsdisabled', () => {
+        this.props.onCaptionsDisabled && this.props.onCaptionsDisabled();
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.muted !== this.props.muted) {
+      this.player.muted = this.props.muted;
     }
   }
 
@@ -185,20 +228,6 @@ class Plyr extends Component {
     );
   }
 
-  renderPlayerWithSRCWithSources(sources) {
-    return (
-      <video
-        className={this.props.className}
-        preload={this.props.preload}
-        poster={this.props.poster}
-      >
-        {sources.map((source, index) =>
-          <source key={index} src={source.src} type={source.type} />
-        )}
-      </video>
-    );
-  }
-
   // For video support for source defined as link to those video files.
   renderPlayerWithSRC() {
     const {
@@ -210,17 +239,27 @@ class Plyr extends Component {
     } = this.props;
 
     if (sources && Array.isArray(sources) && sources.length) {
-      return this.renderPlayerWithSRCWithSources(sources);
-    } else {
       return (
         <video
           className={className}
-          src={url}
           preload={preload}
           poster={poster}
-        />
-      );
+        >
+          {sources.map((source, index) =>
+            <source key={index} src={source.src} type={source.type} />
+          )}
+        </video>
+      )
     }
+
+    return (
+      <video
+        className={className}
+        src={url}
+        preload={preload}
+        poster={poster}
+      />
+    );
   }
 
   renderAudioPlayer() {
@@ -242,15 +281,15 @@ class Plyr extends Component {
           )}
         </audio>
       )
-    } else {
-      return (
-        <audio
-          className={className}
-          preload={preload}
-          src={url}
-        />
-      )
     }
+
+    return (
+      <audio
+        className={className}
+        preload={preload}
+        src={url}
+      />
+    )
   }
 
   render() {
