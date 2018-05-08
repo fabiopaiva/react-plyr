@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import GithubCorner from 'react-github-corner';
+import Plyr from './Plyr';
 
 import './sass/bundles/demo.css';
 
@@ -40,7 +41,7 @@ class App extends Component {
 
             <div className="call-to-action">
               <span className="button--with-count">
-                <a href="https://github.com/sampotts/plyr" target="_blank" className="button" data-shr-network="github">
+                <a href="https://github.com/xDae/react-plyr" target="_blank" className="button" data-shr-network="github">
                   <svg className="icon" role="presentation">
                     <title>GitHub</title>
                     <path d="M8,0.2c-4.4,0-8,3.6-8,8c0,3.5,2.3,6.5,5.5,7.6
@@ -57,18 +58,7 @@ class App extends Component {
           </header>
 
           <main>
-            <video controls crossOrigin playsInline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player">
-              {/* Video files */}
-              <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" type="video/mp4" size={576} />
-              <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size={720} />
-              <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4" size={1080} />
-              <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1440p.mp4" type="video/mp4" size={1440} />
-              {/* Caption files */}
-              <track kind="captions" label="English" srcLang="en" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt" default />
-              <track kind="captions" label="Français" srcLang="fr" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt" />
-              {/* Fallback for browsers that don't support the <video> element */}
-              <a href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" download>Download</a>
-            </video>
+            <Plyr videoId="bTqVqk7FSmY" debug />
 
             <ul>
               <li className="plyr__cite plyr__cite--video" hidden>
