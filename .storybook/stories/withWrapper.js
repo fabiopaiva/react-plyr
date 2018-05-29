@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 // import { withKnobs, text, number, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
@@ -15,7 +15,7 @@ class Wrapper extends Component {
     this.state = {
       muted: false,
       playerState: 'isStopped'
-    }
+    };
   }
 
   getState = state => {
@@ -27,7 +27,7 @@ class Wrapper extends Component {
       case 'isStopped':
         return '⏹'
       default:
-        '⏺';
+        return '⏺';
     }
   }
 
@@ -83,7 +83,7 @@ class Wrapper extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <Plyr
           videoId="yGh0bjzj4IQ"
           muted={this.state.muted}
@@ -121,7 +121,7 @@ class Wrapper extends Component {
         <hr/>
 
         <h4>State: {this.getState(this.state.playerState)}</h4>
-      </div>
+      </Fragment>
     );
   }
 }

@@ -213,10 +213,39 @@ class Plyr extends Component {
     if (prevProps.muted !== this.props.muted) {
       this.player.muted = this.props.muted;
     }
+
+    if (prevProps.videoId !== this.props.videoId) {
+      this.props.videoId && this.updateVideoSource(this.props.videoId, this.props.provider);
+    }
   }
 
   componentWillUnmount() {
     this.player && this.player.destroy();
+  }
+
+  updateVideoSource = (videoId, provider) => {
+    this.player.source = {
+      type: 'video',
+      sources: [{
+        src: videoId,
+        provider,
+      }],
+    };
+  }
+
+  updateHtmlVideoSource = (videoUrl, type, title, poster, tracks) => {
+    this.player.source = {
+      type,
+      title,
+      sources: [
+        {
+          src: videoUrl,
+          type: 'video/mp4',
+        }
+      ],
+      poster,
+      tracks
+    };
   }
 
   // For video support for plyr supported videos using videoId (Youtube and Vimeo for now).

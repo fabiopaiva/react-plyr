@@ -18,8 +18,23 @@ Add `react-plyr` into your package.json dependencies:
 npm install react-plyr --save
 ```
 
+### CSS
+
+Include the `plyr.css` stylsheet into your `<head>`
+
+```html
+<link rel="stylesheet" href="path/to/plyr.css">
+```
+
+If you want to use our CDN (provided by [Fastly](https://www.fastly.com/)) for the default CSS, you can use the following:
+
+```html
+<link rel="stylesheet" href="https://cdn.plyr.io/3.3.9/plyr.css">
+```
+
 ## Usage
 
+### Simple Youtube or Vimeo video
 ```javascript
 import Plyr from 'react-plyr';
 
@@ -27,50 +42,16 @@ import Plyr from 'react-plyr';
 render() {
   return (
     <Plyr
-      type="youtube"
+      type="youtube" // or "vimeo"
       videoId="CDFN1VatiJA"
     />
   )
 }
 ```
+Note: The ``videoId`` can either be the video ID or URL for the media.
 
 ## Props
-
-|Name|Type|Required|Default|
-|----|----|----|----|
-|type|`oneOf('youtube','vimeo','video','audio')`||`'youtube'`|
-|className|`string`||`'react-plyr'`|
-|videoId|`string`|||
-|url|`string`|||
-|poster|`string`|||
-|sources|`arrayOf`|||
-|onReady|`func`|||
-|onPlay|`func`|||
-|onPause|`func`|||
-|onEnd|`func`|||
-|onLoadedData|`func`|||
-|onSeeked|`func`|||
-|onEnterFullscreen|`func`|||
-|onVolumeChange|`func`|||
-|enabled|`bool`||☑️`true `|
-|controls|`arrayOf`||`['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'fullscreen']`|
-|loadSprite|`bool`||☑️`true `|
-|iconUrl|`string`||`null`|
-|iconPrefix|`string`||`'plyr'`|
-|debug|`bool`||`false`|
-|autoplay|`bool`||`false`|
-|preload|`string`|||
-|seekTime|`number`||`10`|
-|volume|`number`||`5`|
-|clickToPlay|`bool`||☑️`true `|
-|disableContextMenu|`bool`||☑️`true `|
-|hideControls|`bool`||☑️`true `|
-|showPosterOnEnd|`bool`||`false`|
-|keyboardShortcuts|`shape`||`{  focused: true,  global: false}`|
-|tooltips|`shape`||`{  controls: false,  seek: true}`|
-|duration|`number`||`null`|
-|displayDuration|`bool`||☑️`true `|
-|storage|`shape`||`{  enabled: true,  key: 'plyr_volume'}`|
+[WIP]
 
 ## Support
 

@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
 // import { withKnobs, text, number, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
 
 import './withWrapper';
+import './updateVideoSource';
 
 import Plyr from '../../src';
 
@@ -16,7 +17,7 @@ stories.add('Simple Youtube video', withInfo()(() =>
 
 stories.add('Video with all Controls', withInfo()(() =>
   <Plyr
-    videoId="https://youtube.com/watch?v=bTqVqk7FSmY"
+    videoId="bTqVqk7FSmY"
     controls={[
       'play-large', // The large play button in the center
       'restart', // Restart playback
@@ -121,3 +122,21 @@ stories.add('Audio player with sources', withInfo()(() =>
     ]}
   />
 ))
+
+stories.add('Multiple players on same page', withInfo()(() => (
+  <Fragment>
+    {[
+      "https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      "https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      "https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4"
+    ].map((video, index) => (
+      <div key={index} style={{ width: 540 }}>
+        <Plyr
+          url={video}
+          type="video"
+          className={`react-plyr-${index}`}
+        />
+      </div>
+    ))}
+  </Fragment>
+)))
