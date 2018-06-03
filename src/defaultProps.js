@@ -109,7 +109,7 @@ const defaultProps = {
   // Captions settings
   captions: {
     active: false,
-    language: (navigator.language || navigator.userLanguage).split('-')[0],
+    language: (typeof navigator !== 'undefined') ? (navigator.language || navigator.userLanguage).split('-')[0] : 'en',
   },
 
   // Fullscreen settings
