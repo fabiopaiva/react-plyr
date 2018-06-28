@@ -29,7 +29,7 @@ Include the `plyr.css` stylsheet into your `<head>`
 If you want to use our CDN (provided by [Fastly](https://www.fastly.com/)) for the default CSS, you can use the following:
 
 ```html
-<link rel="stylesheet" href="https://cdn.plyr.io/3.3.9/plyr.css">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.3.20/plyr.css">
 ```
 
 ## Usage
