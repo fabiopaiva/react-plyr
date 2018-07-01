@@ -80,5 +80,18 @@
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "identity-obj-proxy"
     }
-  }
+  },
+  "contributors": [
+    "Jose Miguel Bejarano <yo@josemiguel.org>",
+    "Fábio Paiva <fabio@paiva.info>",
+    "Felipe Lacerda <fegolac@gmail.com>",
+    "Frederik Riedel <frederik.riedel@frogg.io>",
+    "Fufu <fahadhashmi44@gmail.com>",
+    "Brandon Fields <brandoneggar@gmail.com>",
+    "Kyle Szives <kjszives@gmail.com>",
+    "Maros Hluska <mhluska@gmail.com>",
+    "Ben Iofel <iofelben+github@gmail.com>",
+    "samahndev <sam.ahn.dev@gmail.com>",
+    "Coriou <benjamin@coriou.net>"
+  ]
 }
