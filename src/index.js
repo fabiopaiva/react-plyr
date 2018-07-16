@@ -128,6 +128,7 @@ class Plyr extends Component {
   rewind = time => this.player && this.player.rewind(time);
   forward = time => this.player && this.player.forward(time);
   getCurrentTime = () => this.player && this.player.currentTime;
+  setCurrentTime = currentTime => this.player.currentTime = currentTime;
   getDuration = () => this.player && this.player.duration;
   getVolume = () => this.player && this.player.volume;
   isMuted = () => this.player && this.player.muted;
