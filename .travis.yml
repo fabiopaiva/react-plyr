@@ -2,11 +2,9 @@ sudo: false
 
 language: node_js
 node_js:
-  - 7
+  - node
 
-cache:
-  directories:
-    - node_modules
+cache: yarn
 
 before_install:
   - npm install codecov.io coveralls
