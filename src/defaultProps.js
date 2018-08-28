@@ -208,7 +208,9 @@ const defaultProps = {
   ads: {
     enabled: false,
     publisherId: '',
-  }
+  },
+
+  captions : []
 };
 
 export default defaultProps;

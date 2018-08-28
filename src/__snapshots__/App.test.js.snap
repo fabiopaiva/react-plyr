@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renders a simple HTML5 Video with Captions 1`] = `
+<video
+  className="react-plyr"
+  poster="/path/to/poster.jpg"
+  src="mymovie.mp4"
+>
+  <track
+    default={true}
+    kind="captions"
+    label="English captions"
+    src="/path/to/english-captions.vtt"
+    srclang="en"
+  />
+  <track
+    kind="captions"
+    label="Spanish captions"
+    src="/path/to/spanish-captions.vtt"
+    srclang="es"
+  />
+</video>
+`;
+
 exports[`renders a simple Vimeo Video 1`] = `
 <div
   className="react-plyr"
