@@ -28,7 +28,7 @@
     "build-storybook": "build-storybook -c .storybook -o docs"
   },
   "dependencies": {
-    "plyr": "^3.3.21",
+    "plyr": "^3.4.8",
     "prop-types": "^15.6.2"
   },
   "devDependencies": {
