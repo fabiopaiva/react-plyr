@@ -9,6 +9,7 @@ class Plyr extends Component {
     super();
 
     this.player = null;
+    this.elementRef = new React.createRef();
 
     this.state = {
       muted: null
@@ -164,8 +165,8 @@ class Plyr extends Component {
       muted: this.state.muted
     };
 
-    const selector = `.${this.props.className.replace(/ /g, '.')}`
-    this.player = new plyr(selector, options);
+    const node = this.elementRef.current;
+    this.player = node && node.classList.contains(this.props.className) ? new plyr(node, options) : null;
 
     if (this.player) {
       this.player.on('ready', () => {
@@ -268,6 +269,7 @@ class Plyr extends Component {
         style={this.props.style}
         data-plyr-provider={this.props.type}
         data-plyr-embed-id={this.props.videoId}
+        ref={this.elementRef}
       />
     );
   }
@@ -293,6 +295,7 @@ class Plyr extends Component {
         srclang={srclang}
         default={def}
         {...attributes}
+        ref={this.elementRef}
       />);
     });
 
@@ -302,6 +305,7 @@ class Plyr extends Component {
           className={className}
           preload={preload}
           poster={poster}
+          ref={this.elementRef}
         >
           {sources.map((source, index) =>
             <source
@@ -322,6 +326,7 @@ class Plyr extends Component {
         src={url}
         preload={preload}
         poster={poster}
+        ref={this.elementRef}
       >
       {captionsMap}
       </video>
@@ -341,6 +346,7 @@ class Plyr extends Component {
         <audio
           className={className}
           preload={preload}
+          ref={this.elementRef}
         >
           {sources.map((source, index) =>
             <source key={index} src={source.src} type={source.type} />
@@ -354,6 +360,7 @@ class Plyr extends Component {
         className={className}
         preload={preload}
         src={url}
+        ref={this.elementRef}
       />
     )
   }
