@@ -107,7 +107,13 @@ class Plyr extends Component {
       enabled: PropTypes.bool,
       key: PropTypes.string
     }),
-    controls: PropTypes.arrayOf(PropTypes.string),
+    controls: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+      PropTypes.func,
+      PropTypes.object,
+      PropTypes.bool
+    ]),
     settings: PropTypes.arrayOf(PropTypes.string),
 
     poster: PropTypes.string,
